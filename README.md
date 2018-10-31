@@ -12,12 +12,12 @@ I'm also using Karpathy's Train/Val/Test Split. You may download it from [here](
 You may also use the `WORMAP.json` file in the directory if you don't wish to create it again. 
 
 ## Files
-`dataset.py` Creates the Custom Dataset
-`inputs.py` Preprocessing of Images
-`vocab` Creates the `WORDMAP.json` file
-`util` Other Functions to be used throught the code
-`models` Defines the models
-`train_eval` For training and evaluation
+`dataset.py` Creates the Custom Dataset<br/>
+`inputs.py` Preprocessing of Images<br/>
+`vocab` Creates the `WORDMAP.json` file<br/>
+`util` Other Functions to be used throught the code<br/>
+`models` Defines the models<br/>
+`train_eval` For training and evaluation<br/>
 `Visualization.ipynb` To visualize the results
 
 ## Trained Model
