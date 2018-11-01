@@ -14,10 +14,10 @@ You may also use the `WORMAP.json` file in the directory if you don't wish to cr
 ## Files
 `dataset.py` Creates the Custom Dataset<br/>
 `inputs.py` Preprocessing of Images<br/>
-`vocab` Creates the `WORDMAP.json` file<br/>
-`util` Other Functions to be used throught the code<br/>
-`models` Defines the models<br/>
-`train_eval` For training and evaluation<br/>
+`vocab.py` Creates the `WORDMAP.json` file<br/>
+`util.py` Other Functions to be used throught the code<br/>
+`models.py` Defines the models<br/>
+`train_eval.py` For training and evaluation<br/>
 `Visualization.ipynb` To visualize the results
 
 ## Trained Model
