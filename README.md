@@ -21,7 +21,7 @@ You may also use the `WORMAP.json` file in the directory if you don't wish to cr
 
 
 ## Trained Model
-If you dont wish to train the model from scratch, you may dowload the trained model from [here](https://drive.google.com/open?id=1H1vz-WLG8AGFziNSY_z9N3BkYFsETZkD). Trained for 8 epochs without finetuning the encoder, and 2 epochs with finetuning. Place the model in the directory folder<br/>
+If you dont wish to train the model from scratch, you may dowload the trained model from [here](https://drive.google.com/open?id=1JBDuYCmpZg2Yi6U_tSj5cRtF5vpAlW_R). Trained for 8 epochs without finetuning the encoder, and 2 epochs with finetuning. Place the model in the directory folder<br/>
 
 ## Testing
 It's very simple! Place the test image in your directory, and name it as `test.jpg`, and then run the `visualization.ipynb`jupyter notebook file to get the results. 
