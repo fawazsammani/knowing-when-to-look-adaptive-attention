@@ -4,7 +4,7 @@
 | Implementation  | BLEU-4 Score |
 | ------------- | ------------- |
 | Original Implementation | **0.251**  |
-| This Implementation  | **0.260**  |
+| This Implementation  | **0.254**  |
 
 ## Dataset
 I'm using the Flickr30k Dataset. You may download the images from [here](http://web.engr.illinois.edu/~bplumme2/Flickr30kEntities). If you wish to use the COCO Dataset, you will need to comment out 2 lines in the code. <br/>
