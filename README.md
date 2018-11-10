@@ -12,16 +12,16 @@ I'm also using Karpathy's Train/Val/Test Split. You may download it from [here](
 You may also use the `WORMAP.json` file in the directory if you don't wish to create it again. 
 
 ## Files
-`dataset.py` Creates the Custom Dataset<br/>
-`inputs.py` Preprocessing of Images<br/>
-`vocab.py` Creates the `WORDMAP.json` file<br/>
-`util.py` Other Functions to be used throught the code<br/>
-`models.py` Defines the models<br/>
-`train_eval.py` For training and evaluation<br/>
-`Visualization.ipynb` To visualize the results
+`preprocess.py` Creates the `WORDMAP.json` file and the `.h5` files <br/>
+`dataset.py` Creates the custom dataset<br/>
+`util.py` Functions to be used throught the code<br/>
+`models.py` Defines the architectures<br/> 
+`train_eval` For Training and Evaluation<br/> 
+`visualize.ipynb` For Testing and Visualization<br/>
+
 
 ## Trained Model
-If you dont wish to train the model from scratch, you may dowload the trained model from [here](https://drive.google.com/open?id=1H1vz-WLG8AGFziNSY_z9N3BkYFsETZkD). Trained for 8 epochs without finetuning the encoder, and 2 epochs with finetuning. <br/>
+If you dont wish to train the model from scratch, you may dowload the trained model from [here](https://drive.google.com/open?id=1H1vz-WLG8AGFziNSY_z9N3BkYFsETZkD). Trained for 8 epochs without finetuning the encoder, and 2 epochs with finetuning. Place the model in the directory folder<br/>
 
 ## Testing
 It's very simple! Place the test image in your directory, and name it as `test.jpg`, and then run the `visualization.ipynb`jupyter notebook file to get the results. 
