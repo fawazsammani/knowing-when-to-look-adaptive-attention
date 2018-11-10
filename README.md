@@ -24,13 +24,16 @@ You may also use the `WORMAP.json` file in the directory if you don't wish to cr
 If you dont wish to train the model from scratch, you may dowload the trained model from [here](https://drive.google.com/open?id=1H1vz-WLG8AGFziNSY_z9N3BkYFsETZkD). Trained for 15 epochs without finetuning the encoder, and 5 epochs with finetuning. <br/>
 
 ## Testing
-It's very simple! Place the test image in your directory, and name it as `test.jpg`, and then run the `Visualization.ipynb`jupyter notebook file to get the results. 
+It's very simple! Place the test image in your directory, and name it as `test.jpg`, and then run the `visualization.ipynb`jupyter notebook file to get the results. 
 
 ## Results
-The results of some validation and testing images of the Flickr30k from Karpathy's Split is shown below. <br/> <br/>
-![res1](https://user-images.githubusercontent.com/30661597/47791821-cbcba380-dcd7-11e8-940c-2c548e908a7d.png)
-![res2](https://user-images.githubusercontent.com/30661597/47791823-cbcba380-dcd7-11e8-8756-d6ebaf039ed3.png)
-![res3](https://user-images.githubusercontent.com/30661597/47791824-cbcba380-dcd7-11e8-9860-ad20bbe44be8.png)
+The results of some validation and testing images of the Flickr30k from Karpathy's Split is shown below. *Betas are shown in red*<br/> <br/>
+![10350842 result](https://user-images.githubusercontent.com/30661597/48299555-3375b180-e483-11e8-83e0-2798d2a17de5.png)
+![121556607 result](https://user-images.githubusercontent.com/30661597/48299556-340e4800-e483-11e8-8eed-d995e8d878e6.png)
+![1499495021 result](https://user-images.githubusercontent.com/30661597/48299557-340e4800-e483-11e8-8867-3dafa5449976.png)
+![2209496328 result](https://user-images.githubusercontent.com/30661597/48299558-34a6de80-e483-11e8-8b5e-fd2d211f4791.png)
+![2479180530 result](https://user-images.githubusercontent.com/30661597/48299559-353f7500-e483-11e8-996b-9fa7f0017281.png)
+
 
 ## References
 Thanks to @https://github.com/sgrvinod/a-PyTorch-Tutorial-to-Image-Captioning<br/>
