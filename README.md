@@ -19,7 +19,7 @@ It's very simple! Place the test image in your directory, and name it as `test.j
 ## Results
 The results of some validation and testing images of the Flickr30k from Karpathy's Split is shown below. *Betas are shown in red*<br/> <br/>
 ![final1](https://user-images.githubusercontent.com/30661597/48822223-10fc5780-ed11-11e8-9002-812ad7039f36.png)
-![final2](https://user-images.githubusercontent.com/30661597/48824093-1b6e1f80-ed18-11e8-8daf-9a79c10c41b8.png)
+![final2](https://user-images.githubusercontent.com/30661597/48824160-4bb5be00-ed18-11e8-9811-549d82e27427.png)
 
 ## References
 Thanks to @https://github.com/sgrvinod/a-PyTorch-Tutorial-to-Image-Captioning<br/>
