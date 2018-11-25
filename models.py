@@ -226,10 +226,10 @@ class DecoderWithAttention(nn.Module):
                 h, c = self.LSTM(current_input, (h[:batch_size_t], c[:batch_size_t]))  # (batch_size_t, hidden_size)
             # Run the sentinal model
             if begining_sen:
-                st = self.sentinal(current_input, hidden[:batch_size_t], cell[:batch_size_t])
+                st = self.sentinal(current_input, hidden[:batch_size_t], c)
                 begining_sen = False
             else:
-                st = self.sentinal(current_input, h_prev[:batch_size_t], c[:batch_size_t])
+                st = self.sentinal(current_input, h_prev[:batch_size_t], c)
 
             # Run the adaptive attention model
             alpha_t, beta_t, c_hat = self.adaptive_attention(spatial_image[:batch_size_t],h,st)
