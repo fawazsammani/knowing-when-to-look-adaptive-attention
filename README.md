@@ -11,7 +11,7 @@ You may also use the `WORMAP.json` file in the directory if you don't wish to cr
 `util.py` Functions to be used throught the code<br/>
 `models.py` Defines the architectures<br/> 
 `train_eval` For Training and Evaluation<br/> 
-`visualize.ipynb` For Testing and Visualization<br/>
+`visualization.ipynb` For Testing and Visualization<br/>
 
 ## Testing
 It's very simple! Place the test image in your directory, and name it as `test.jpg`, and then run the `visualization.ipynb`jupyter notebook file to get the results. 
