@@ -17,7 +17,7 @@ You may also use the `WORMAP.json` file in the directory if you don't wish to cr
 It's very simple! Place the test image in your directory, and name it as `test.jpg`, and then run the `visualization.ipynb`jupyter notebook file to get the results. 
 
 ## Results
-The results of some validation and testing images of the Flickr30k from Karpathy's Split is shown below. *Betas are shown in red*<br/> <br/>
+The results of some validation and testing images of the Flickr30k from Karpathy's Split is shown below.<br/> <br/>
 ![final1](https://user-images.githubusercontent.com/30661597/48822223-10fc5780-ed11-11e8-9002-812ad7039f36.png)
 ![final2](https://user-images.githubusercontent.com/30661597/48824160-4bb5be00-ed18-11e8-9811-549d82e27427.png)
 
