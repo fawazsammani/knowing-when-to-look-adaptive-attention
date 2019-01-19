@@ -168,7 +168,6 @@ class DecoderWithAttention(nn.Module):
         return h, c
     
     def forward(self, spatial_image, global_image, encoded_captions, caption_lengths, enc_image):
-        
         """
         spatial_image: the spatial image features returned by the Encoder, of shape: (batch_size,num_pixels,hidden_size)
         global_image: the global image features returned by the Encoder, of shape: (batch_size, embed_size)
@@ -218,7 +217,6 @@ class DecoderWithAttention(nn.Module):
             h, c = self.LSTM(current_input, (h[:batch_size_t], c[:batch_size_t]))  # (batch_size_t, hidden_size)
             # Run the sentinal model
             st = self.sentinal(current_input, h_prev[:batch_size_t], c)
-
             # Run the adaptive attention model
             alpha_t, beta_t, c_hat = self.adaptive_attention(spatial_image[:batch_size_t],h,st)
             # Compute the probability over the vocabulary
