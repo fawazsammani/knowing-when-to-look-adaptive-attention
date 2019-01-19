@@ -193,7 +193,7 @@ class DecoderWithAttention(nn.Module):
         embeddings = self.embedding(encoded_captions)     # (batch_size, max_caption_length, embed_dim)
 
         # Initialize the LSTM state
-        hidden, cell = self.init_hidden_state(enc_image)          # (batch_size, hidden_size)
+        h,c = self.init_hidden_state(enc_image)          # (batch_size, hidden_size)
 
         # We won't decode at the <end> position, since we've finished generating as soon as we generate <end>
         decode_lengths = (caption_lengths - 1).tolist()
@@ -206,30 +206,18 @@ class DecoderWithAttention(nn.Module):
         # Concatenate the embeddings and global image features for input to LSTM 
         global_image = global_image.unsqueeze(1).expand_as(embeddings)
         inputs = torch.cat((embeddings,global_image), dim = 2)    # (batch_size, max_caption_length, embed_dim * 2)
-        begining_lstm = True
-        begining_sen = True
-        
+
         #Start decoding
         for timestep in range(max(decode_lengths)):
             # Create a Packed Padded Sequence manually, to process only the effective batch size N_t at that timestep. Note
             # that we cannot use the pack_padded_seq provided by torch.util because we are using an LSTMCell, and not an LSTM
             batch_size_t = sum([l > timestep for l in decode_lengths])
             current_input = inputs[:batch_size_t, timestep, :]             # (batch_size_t, embed_dim * 2)
-            
-            # At the first timestep, the initialized hidden and cell state from the encoder output is passed
-            if begining_lstm:
-                h, c = self.LSTM(current_input, (hidden[:batch_size_t], cell[:batch_size_t]))
-                begining_lstm = False
-            else:  
-                # First, keep a copy of the hidden state since we need to pass it to the sentinal later. 
-                h_prev = h.clone()
-                h, c = self.LSTM(current_input, (h[:batch_size_t], c[:batch_size_t]))  # (batch_size_t, hidden_size)
+            # First, keep a copy of the hidden state since we need to pass it to the sentinal later. 
+            h_prev = h.clone()
+            h, c = self.LSTM(current_input, (h[:batch_size_t], c[:batch_size_t]))  # (batch_size_t, hidden_size)
             # Run the sentinal model
-            if begining_sen:
-                st = self.sentinal(current_input, hidden[:batch_size_t], c)
-                begining_sen = False
-            else:
-                st = self.sentinal(current_input, h_prev[:batch_size_t], c)
+            st = self.sentinal(current_input, h_prev[:batch_size_t], c)
 
             # Run the adaptive attention model
             alpha_t, beta_t, c_hat = self.adaptive_attention(spatial_image[:batch_size_t],h,st)
