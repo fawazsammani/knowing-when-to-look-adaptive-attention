@@ -64,7 +64,7 @@ def train(train_loader, encoder, decoder, criterion, encoder_optimizer, decoder_
         loss = criterion(scores, targets)
         
         # Back prop.
-        decoder_optimizer.zero_grad()
+        decoder.zero_grad()
         if encoder_optimizer is not None:
             encoder_optimizer.zero_grad()
         loss.backward()
@@ -73,6 +73,8 @@ def train(train_loader, encoder, decoder, criterion, encoder_optimizer, decoder_
 #         clip_gradient(decoder_optimizer, grad_clip)
 #         if encoder_optimizer is not None:
 #             clip_gradient(encoder_optimizer, grad_clip)
+        for par in decoder.LSTM.parameters():
+            par.data.clamp_( -grad_clip, grad_clip)
                 
         # Update weights
         decoder_optimizer.step()
