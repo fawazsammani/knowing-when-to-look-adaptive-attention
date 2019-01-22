@@ -64,9 +64,8 @@ def train(train_loader, encoder, decoder, criterion, encoder_optimizer, decoder_
         loss = criterion(scores, targets)
         
         # Back prop.
-        decoder.zero_grad()
-        if encoder_optimizer is not None:
-            encoder_optimizer.zero_grad()
+        decoder_optimizer.zero_grad()
+        encoder_optimizer.zero_grad() 
         loss.backward()
         
         # Clip gradients
@@ -78,8 +77,7 @@ def train(train_loader, encoder, decoder, criterion, encoder_optimizer, decoder_
                 
         # Update weights
         decoder_optimizer.step()
-        if encoder_optimizer is not None:
-            encoder_optimizer.step()
+        encoder_optimizer.step()
             
         # Keep track of metrics
         top5 = accuracy(scores, targets, 5)
@@ -266,12 +264,10 @@ if checkpoint is None:
                                    vocab_size = len(word_map), 
                                    att_dim = attention_dim, 
                                    embed_size = emb_dim) 
-    
     encoder = Encoder(hidden_size = hidden_size, embed_size = emb_dim)
-    
-    decoder_params = list(encoder.spatial_features.parameters()) + list(encoder.global_features.parameters()) + list(decoder.parameters())
-    decoder_optimizer = torch.optim.Adam(params=decoder_params,lr=decoder_lr, betas = (0.8,0.999))
-    encoder_optimizer = None
+    decoder_optimizer = torch.optim.Adam(params=decoder.parameters(),lr=decoder_lr, betas = (0.8,0.999))
+    encoder_optimizer = torch.optim.Adam(params=filter(lambda p: p.requires_grad, encoder.parameters()),
+                                         lr=encoder_lr, betas = (0.8,0.999))
     
 else:
     checkpoint = torch.load(checkpoint)
@@ -282,10 +278,9 @@ else:
     decoder_optimizer = checkpoint['decoder_optimizer']
     encoder = checkpoint['encoder']
     encoder_optimizer = checkpoint['encoder_optimizer']
-    if fine_tune_encoder is True and encoder_optimizer is None:
+    if fine_tune_encoder:
         encoder.fine_tune(fine_tune_encoder)
-        encoder_optimizer = torch.optim.Adam(params=filter(lambda p: p.requires_grad, encoder.resnet.parameters()),
-                                             lr=encoder_lr, betas = (0.8,0.999))
+
 # Move to GPU, if available
 decoder = decoder.to(device)
 encoder = encoder.to(device)
