@@ -21,6 +21,7 @@ class Encoder(nn.Module):
         self.resnet = nn.Sequential(*modules) 
         self.spatial_features = nn.Linear(2048, hidden_size)
         self.global_features = nn.Linear(2048, embed_size)
+        self.avgpool = nn.AvgPool2d(7)
         self.dropout = nn.Dropout(0.5)
         self.init_weights()
         self.fine_tune()    # To fine-tune the CNN, self.fine_tune(status = True)
@@ -40,13 +41,13 @@ class Encoder(nn.Module):
         input: resized image of shape (batch_size,3,224,224)
         """
         #Run the image through the ResNet
-        encoded_image = self.resnet(images)                                     # (batch_size,2048,7,7)
+        encoded_image = self.resnet(images)         # (batch_size,2048,7,7)
         batch_size = encoded_image.shape[0]
         features = encoded_image.shape[1]
         num_pixels = encoded_image.shape[2] * encoded_image.shape[3]
-        #Get the global image features: ag = 1/k[sum(ai)]
-        global_f = encoded_image.view(batch_size,features,num_pixels)           # (batch_size,features,num_pixels)
-        global_f = global_f.mean(dim=2)                                         # (batch_size, features)
+        # Get the global features of the image
+        global_f = self.avgpool(encoded_image)      # (batch_size, 2048,1,1)
+        global_f = global_f.view(global_f.size(0), -1)   # (batch_size, 2048)
         #Reshape the encoded image to get it ready for transformation
         enc_image = encoded_image.view(batch_size,num_pixels,features)          # (batch_size,num_pixels,features)
         #Get the spatial representation
