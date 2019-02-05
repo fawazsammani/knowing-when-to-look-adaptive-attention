@@ -31,7 +31,6 @@ print_freq = 100                        # print training/validation stats every 
 fine_tune_encoder = False               # set to true after 20 epochs 
 checkpoint = None                       # path to checkpoint, None at the begining
 
-
 def train(train_loader, encoder, decoder, criterion, encoder_optimizer, decoder_optimizer, epoch, vocab_size):
 
     decoder.train()                 # train mode (dropout and batchnorm is used)
@@ -46,44 +45,31 @@ def train(train_loader, encoder, decoder, criterion, encoder_optimizer, decoder_
         imgs = imgs.to(device)
         caps = caps.to(device)
         caplens = caplens.to(device)
-        
         # Forward prop.
         spatial_image, global_image, enc_image = encoder(imgs)
         predictions, alphas, betas, encoded_captions, decode_lengths, sort_ind = decoder(spatial_image, global_image, 
                                                                                          caps, caplens, enc_image)
-        
         # Since we decoded starting with <start>, the targets are all words after <start>, up to <end>
         targets = encoded_captions[:, 1:]
-        
         # Remove timesteps that we didn't decode at, or are pads
         # pack_padded_sequence is an easy trick to do this
         scores, _ = pack_padded_sequence(predictions, decode_lengths, batch_first=True)
         targets, _ = pack_padded_sequence(targets, decode_lengths, batch_first=True)
-        
         # Calculate loss
         loss = criterion(scores, targets)
-        
         # Back prop.
         decoder_optimizer.zero_grad()
-        encoder_optimizer.zero_grad() 
+        encoder_optimizer.zero_grad()  
         loss.backward()
-        
-        # Clip gradients
-#         clip_gradient(decoder_optimizer, grad_clip)
-#         if encoder_optimizer is not None:
-#             clip_gradient(encoder_optimizer, grad_clip)
-        for par in decoder.LSTM.parameters():
-            par.data.clamp_( -grad_clip, grad_clip)
-                
+        #torch.nn.utils.clip_grad_value_(decoder.LSTM.parameters(), grad_clip)
+        clip_gradient(decoder_optimizer, grad_clip):
         # Update weights
         decoder_optimizer.step()
         encoder_optimizer.step()
-            
         # Keep track of metrics
         top5 = accuracy(scores, targets, 5)
         losses.update(loss.item(), sum(decode_lengths))    
         top5accs.update(top5, sum(decode_lengths))
-
         # Print status every print_freq iterations --> (print_freq * batch_size) images
         if i % print_freq == 0:
             print('Epoch: [{0}][{1}/{2}]\t'
@@ -91,7 +77,6 @@ def train(train_loader, encoder, decoder, criterion, encoder_optimizer, decoder_
                   'Top-5 Accuracy {top5.val:.3f} ({top5.avg:.3f})\t'.format(epoch, i, len(train_loader),
                                                                             loss=losses,
                                                                             top5=top5accs))
-
 def beam_search_eval(encoder, decoder, img, beam_size, wrong):
     
     k = beam_size
@@ -248,11 +233,9 @@ def evaluate(encoder, decoder):
             print("Iteration {}\tLoss With Teacher Forcing: {:.3f}\t{} Predictions exceeded 20 words till now".format(iteration,
                                                                                                                       loss,
                                                                                                                       wrong_p))
-
     assert len(all_references) == len(all_predictions)
     val_score = corpus_bleu(all_references, all_predictions)
     return val_score
-
 
 with open('WORDMAP.json', 'r') as j:
     word_map = json.load(j)
@@ -260,7 +243,7 @@ with open('WORDMAP.json', 'r') as j:
 rev_word_map = {v: k for k, v in word_map.items()}  # idx2word
 
 if checkpoint is None:
-    decoder = DecoderWithAttention(hidden_size = hidden_size, 
+    decoder = DecoderWithAttention(hidden_size = hidden_size,
                                    vocab_size = len(word_map), 
                                    att_dim = attention_dim, 
                                    embed_size = emb_dim) 
