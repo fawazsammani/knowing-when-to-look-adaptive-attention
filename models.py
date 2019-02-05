@@ -67,7 +67,7 @@ class Encoder(nn.Module):
             for module in list(self.resnet.children())[7:]:    #1 layer only. len(list(resnet.children())) = 8
                 for param in module.parameters():
                     param.requires_grad = True 
-
+                    
 class AdaptiveLSTMCell(nn.Module):
     def __init__(self, inputSize, hiddenSize):
         super(AdaptiveLSTMCell, self).__init__()
@@ -229,4 +229,4 @@ class DecoderWithAttention(nn.Module):
             predictions[:batch_size_t, timestep, :] = pt
             alphas[:batch_size_t, timestep, :] = alpha_t
             betas[:batch_size_t, timestep, :] = beta_t
-        return predictions, alphas, betas, encoded_captions, decode_lengths, sort_ind
+        return predictions, alphas, betas, encoded_captions, decode_lengths, sort_ind  
