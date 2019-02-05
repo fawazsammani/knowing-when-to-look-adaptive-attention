@@ -91,7 +91,7 @@ for impaths, imcaps, split in [(train_image_paths, train_image_captions, 'TRAIN'
         # Make a note of the number of captions we are sampling per image
         h.attrs['captions_per_image'] = captions_per_image
         # Create dataset inside HDF5 file to store images
-        images = h.create_dataset('images', (len(impaths), 3, 254, 254), dtype='uint8')
+        images = h.create_dataset('images', (len(impaths), 3, 224, 224), dtype='uint8')
         print("\nReading {} images and captions, storing to file...\n".format(split))
         
         enc_captions = []
@@ -110,10 +110,10 @@ for impaths, imcaps, split in [(train_image_paths, train_image_captions, 'TRAIN'
             
             # Read images
             img = imread(impaths[i]) 
-            img = imresize(img, (254, 254))                     # Resize the image to the expected size
+            img = imresize(img, (224, 224))                     # Resize the image to the expected size
             img = img.transpose(2, 0, 1)                        # make the channels (index 2) first,as expected by PyTorch
             
-            assert img.shape == (3, 254, 254)                   # raise an error if the image shape is not (3,256,256)
+            assert img.shape == (3, 224, 224)                   # raise an error if the image shape is not (3,224,224)
             # Save image to HDF5 file
             images[i] = img
             
