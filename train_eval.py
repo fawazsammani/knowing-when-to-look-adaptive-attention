@@ -62,7 +62,7 @@ def train(train_loader, encoder, decoder, criterion, encoder_optimizer, decoder_
         encoder_optimizer.zero_grad()  
         loss.backward()
         #torch.nn.utils.clip_grad_value_(decoder.LSTM.parameters(), grad_clip)
-        clip_gradient(decoder_optimizer, grad_clip):
+        clip_gradient(decoder_optimizer, grad_clip)
         # Update weights
         decoder_optimizer.step()
         encoder_optimizer.step()
