@@ -5,6 +5,7 @@ import torch.optim
 import torch.utils.data
 from torch.nn import init
 import torch.nn.functional as F
+import math
 
 #Get what you have, CPU or GPU
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
