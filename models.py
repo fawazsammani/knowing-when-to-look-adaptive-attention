@@ -50,7 +50,8 @@ class Encoder(nn.Module):
         global_f = self.avgpool(encoded_image)      # (batch_size, 2048,1,1)
         global_f = global_f.view(global_f.size(0), -1)   # (batch_size, 2048)
         #Reshape the encoded image to get it ready for transformation
-        enc_image = encoded_image.view(batch_size,num_pixels,features)          # (batch_size,num_pixels,features)
+        enc_image = encoded_image.permute(0, 2, 3, 1)  #  (batch_size,7,7,2048)
+        enc_image = enc_image.view(batch_size,num_pixels,features) # (batch_size, 49,2048)
         #Get the spatial representation
         spatial_image = F.relu(self.spatial_features(self.dropout(enc_image)))  # (batch_size,num_pixels,hidden_size)
         # Get the global features 
