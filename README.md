@@ -23,6 +23,8 @@ The file [here](https://drive.google.com/open?id=17SNFn4WL5X9z-M6RPXD1kt1JarI3EW
 The pretrained model is provided [here](https://drive.google.com/file/d/1id2Vlvy3XtYbM3DoWgtHdiSP1z84JCq1/view) as well.
 Some results from Karpathy's Split is shown below.<br/> <br/>
 ![demo1](https://user-images.githubusercontent.com/30661597/58374547-b1f2f600-7f72-11e9-83be-3b16b190d2a9.PNG)
+<br/>
+<br/>
 ![demo2](https://user-images.githubusercontent.com/30661597/58374548-b1f2f600-7f72-11e9-9853-82869d746e31.PNG)
 
 
