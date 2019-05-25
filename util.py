@@ -26,31 +26,29 @@ def clip_gradient(optimizer, grad_clip):
                 param.grad.data.clamp_(-grad_clip, grad_clip)
 
 #Function to save the model checkpoint
-def save_checkpoint(epoch, epochs_since_improvement, encoder, decoder, encoder_optimizer, decoder_optimizer, bleu4, is_best):
+def save_checkpoint(epoch, epochs_since_improvement, encoder, decoder, encoder_optimizer, decoder_optimizer, cider, is_best):
+
     state = {'epoch': epoch,
              'epochs_since_improvement': epochs_since_improvement,
-             'bleu-4': bleu4,
+             'cider': cider,
              'encoder': encoder,
              'decoder': decoder,
              'encoder_optimizer': encoder_optimizer,
              'decoder_optimizer': decoder_optimizer}
-
-    filename = 'checkpoint_' + str(epoch) + '_' + str(bleu4) + '.pth.tar'
+    
+    filename = 'checkpoint_' + str(epoch) + '.pth.tar'
     torch.save(state, filename)
     # If this checkpoint is the best so far, store a copy so it doesn't get overwritten by a worse checkpoint
     if is_best:
         torch.save(state, 'BEST_' + filename)
 
 #Function to shrink the learning rate by a specified factor in the interval (0,1) to multiply the learning rate with
-def adjust_learning_rate(optimizer, current_epoch):
-    frac = float(current_epoch - 20) / 50
-    shrink_factor = math.pow(0.5, frac)
-    
+def adjust_learning_rate(optimizer, shrink_factor):
+
     print("\nDECAYING learning rate.")
     for param_group in optimizer.param_groups:
         param_group['lr'] = param_group['lr'] * shrink_factor
-
-    print("The new learning rate is {}\n".format(optimizer.param_groups[0]['lr']))
+    print("The new learning rate is %f\n" % (optimizer.param_groups[0]['lr'],))
 
 #Function to compute the top-k accuracy, from predicted and true labels.
 def accuracy(scores, targets, k):
