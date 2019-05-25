@@ -5,7 +5,8 @@ import torch.optim
 import torch.utils.data
 import torchvision.transforms as transforms
 from torch.nn.utils.rnn import pack_padded_sequence
-from nltk.translate.bleu_score import corpus_bleu
+from cococaption.pycocotools.coco import COCO
+from cococaption.pycocoevalcap.eval import COCOEvalCap
 import torch.backends.cudnn as cudnn
 from models import *
 from util import *
