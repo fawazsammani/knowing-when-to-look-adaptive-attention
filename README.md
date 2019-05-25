@@ -4,7 +4,7 @@
 ## Instructions
 Download the COCO 2014 dataset from [here](http://cocodataset.org/#download). In particualr, you'll need the 2014 Training, Validation and Testing images, as well as the 2014 Train/Val annotations.
 Then download Karpathy's Train/Val/Test Split. You may download it from [here](http://cs.stanford.edu/people/karpathy/deepimagesent/caption_datasets.zip).<br/>
-If you want to do evaluation on COCO, make sure to download the COCO API from [here](https://github.com/cocodataset/cocoapi) if your on Linux or from [here](https://github.com/philferriere/cocoapi) if your on Windows. Then download the COCO caption toolkit from [here](https://github.com/tylin/coco-caption) or just uses the folder included in this repository. Don't forget to download java as well. Simply dowload it from [here](https://www.java.com/en/download/) if you don't have it. 
+If you want to do evaluation on COCO, make sure to download the COCO API from [here](https://github.com/cocodataset/cocoapi) if your on Linux or from [here](https://github.com/philferriere/cocoapi) if your on Windows. Then download the COCO caption toolkit from [here](https://github.com/tylin/coco-caption) and re-name the folder to `cococaption`. Don't forget to download java as well. Simply dowload it from [here](https://www.java.com/en/download/) if you don't have it. 
 
 ## Files
 `preprocess.py` Creates the `WORDMAP.json` file and the `.h5` files <br/>
