@@ -20,15 +20,15 @@ cudnn.benchmark = True         # set to true only if inputs to model are fixed s
 start_epoch = 0
 epochs = 40                             # number of epochs to train before finetuning the encoder. Set to 18 when finetuning ecoder
 epochs_since_improvement = 0            # keeps track of number of epochs since there's been an improvement in validation BLEU
-batch_size = 32                         # set to 32 when finetuning the encoder
+batch_size = 80                         # set to 32 when finetuning the encoder
 workers = 1                             # number of workers for data-loading
 encoder_lr = 1e-4                       # learning rate for encoder. if fine-tuning, change to 1e-5 for CNN parameters only
 decoder_lr = 5e-4                       # learning rate for decoder
 grad_clip = 0.1                         # clip gradients at an absolute value of
 best_cider = 0.                         # Current BLEU-4 score 
 print_freq = 100                        # print training/validation stats every __ batches
-fine_tune_encoder = True                # set to true after 20 epochs 
-checkpoint = 'BEST_checkpoint_10.pth.tar'    # path to checkpoint, None at the begining
+fine_tune_encoder = False                # set to true after 20 epochs 
+checkpoint = None    # path to checkpoint, None at the begining
 annFile = 'cococaptioncider/annotations/captions_val2014.json'  # Location of validation annotations
 
 
