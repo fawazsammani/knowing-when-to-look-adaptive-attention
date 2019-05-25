@@ -19,7 +19,7 @@ If you want to do evaluation on COCO, make sure to download the COCO API from [h
 Place the test image in the folder 'test_imgs', and name it as `test.jpg`, and then run the `run.ipynb`jupyter notebook file to get the results. 
 
 ## Results
-The results of some validation and testing images of the Flickr30k from Karpathy's Split is shown below.<br/> <br/>
+Some results from Karpathy's Split is shown below.<br/> <br/>
 ![demo1](https://user-images.githubusercontent.com/30661597/58374547-b1f2f600-7f72-11e9-83be-3b16b190d2a9.PNG)
 ![demo2](https://user-images.githubusercontent.com/30661597/58374548-b1f2f600-7f72-11e9-9853-82869d746e31.PNG)
 
