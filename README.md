@@ -21,7 +21,7 @@ Place the test image in the folder 'test_imgs', and name it as `test.jpg`, and t
 ## Results
 The file [here](https://drive.google.com/open?id=17SNFn4WL5X9z-M6RPXD1kt1JarI3EW9o) contains the obtained evalaution scores. 
 The pretrained model is provided [here](https://drive.google.com/open?id=1id2Vlvy3XtYbM3DoWgtHdiSP1z84JCq1) as well.
-Some results from Karpathy's Split is shown below. The visual grounding probability (1-\\beta) is shown in green. <br/> <br/>
+Some results from Karpathy's Split is shown below. The visual grounding probability (1-"\\beta") is shown in green. <br/> <br/>
 ![demo1](https://user-images.githubusercontent.com/30661597/58374547-b1f2f600-7f72-11e9-83be-3b16b190d2a9.PNG)
 <br/>
 <br/>
