@@ -1,5 +1,7 @@
 ## PyTorch Implementation of Knowing When to Look: Adaptive Attention via a Visual Sentinal for Image Captioning [Paper](https://arxiv.org/abs/1612.01887)<br/>
  Original Torch Implementation by Lu. et al can be found [here](https://github.com/jiasenlu/AdaptiveAttention)
+ 
+ <img width="802" alt="ss" src="https://user-images.githubusercontent.com/30661597/62519932-15e14700-b85f-11e9-88e8-9f3a36993723.png">
 
 ## Instructions
 Download the COCO 2014 dataset from [here](http://cocodataset.org/#download). In particualr, you'll need the 2014 Training, Validation and Testing images, as well as the 2014 Train/Val annotations.
