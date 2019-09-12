@@ -31,4 +31,4 @@ Some results from Karpathy's Split is shown below. The visual grounding probabil
 
 
 ## References
-Thanks to @https://github.com/sgrvinod/a-PyTorch-Tutorial-to-Image-Captioning<br/>
+Code adopted from [sgrvinod](https://github.com/sgrvinod/a-PyTorch-Tutorial-to-Image-Captioning) implementation of "Show, Attend and Tell"<br/>
