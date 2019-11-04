@@ -78,7 +78,6 @@ class AdaptiveAttention(nn.Module):
         decoder_out: the decoder hidden state of shape (batch_size, hidden_size)
         st: visual sentinal returned by the Sentinal class, of shape: (batch_size, hidden_size)
         """
-        # view neighbor from bach_size * neighbor_num x rnn_size to bach_size x rnn_size * neighbor_num
         num_pixels = spatial_image.shape[1]
         visual_attn = self.v_att(spatial_image)           # (batch_size,num_pixels,att_dim)
         sentinel_affine = F.relu(self.sen_affine(st))     # (batch_size,hidden_size)
