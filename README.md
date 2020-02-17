@@ -1,4 +1,6 @@
-PyTorch Implementation of **Knowing When to Look: Adaptive Attention via a Visual Sentinal for Image Captioning** [Paper](https://arxiv.org/abs/1612.01887)<br/>
+## Adaptive Attention
+
+PyTorch Implementation of *Knowing When to Look: Adaptive Attention via a Visual Sentinal for Image Captioning* [Paper](https://arxiv.org/abs/1612.01887)<br/>
  Original Torch Implementation by Lu. et al can be found [here](https://github.com/jiasenlu/AdaptiveAttention)
  
  <img width="802" alt="ss" src="https://user-images.githubusercontent.com/30661597/62519932-15e14700-b85f-11e9-88e8-9f3a36993723.png">
