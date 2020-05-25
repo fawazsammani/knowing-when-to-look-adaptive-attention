@@ -25,8 +25,7 @@ The folder `caption data` includes data used along with images, mainly for evalu
 Place the test image in the folder 'test_imgs', and name it as `test.jpg`, and then run the `run.ipynb`jupyter notebook file to get the results. 
 
 ## Results
-The file [here](https://drive.google.com/open?id=1TYZ2qfZz7CvsR3UTPw66FIHKmdwcQ6H5) contains the obtained evalaution scores. 
-The pretrained model is provided [here](https://drive.google.com/open?id=1ThXtsi_Z0NVHnuyIB0eYqHbrLoqyyaPw) as well (trained for 12 epochs). 
+The file [here](https://drive.google.com/open?id=1TYZ2qfZz7CvsR3UTPw66FIHKmdwcQ6H5) contains the obtained evalaution scores on the validation split. The pretrained model is provided [here](https://drive.google.com/open?id=1ThXtsi_Z0NVHnuyIB0eYqHbrLoqyyaPw) as well (trained for 12 epochs). 
 Some results from Karpathy's Split is shown below. The visual grounding probability (1-beta) is shown in green. <br/> <br/>
 ![demo](https://user-images.githubusercontent.com/30661597/74641885-01d2b680-51ad-11ea-9850-473ee2759c77.png)
 
